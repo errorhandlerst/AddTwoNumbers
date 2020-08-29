@@ -1,0 +1,41 @@
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+
+    def addTwoNumbers(self, l1: ListNode, l2: ListNode) -> ListNode:
+        l1=Solution.findList(l1)
+        l2=Solution.findList(l2)
+        l3Sum=int(l1)+int(l2)
+        splitlist=[]
+        splitlist = [int(x) for x in str(l3Sum)] 
+        l3=splitlist[::-1]
+        
+        result = ListNode(l3[0])
+
+        l = result
+  
+        for i in range(1,len(l3)):
+  
+            l.next=ListNode(l3[i])
+    
+            l = l.next
+           
+        return result
+    
+    def findList(root:ListNode):
+        l=[]
+        if root is None:
+            return ""
+        
+        while root is not None:
+            l.append(root.val)
+            root=root.next
+        print(l)    
+        l=reversed(l)
+        l1 = ''.join([str(elem) for elem in l]) 
+        return l1
+
+        
